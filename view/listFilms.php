@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
 
-<p class = "uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> films </p>
+<p> Il y a <?= $requete->rowCount() ?> films </p>
 
-<table class = "uk-table uk-table-striped">
+<table>
     <thead>
         <tr>
             <th> TITRE </th>
@@ -27,3 +27,4 @@ $titre_secondaire = "Liste des films";
 $contenu = ob_get_clean();
 require "view/template.php";
 
+?>

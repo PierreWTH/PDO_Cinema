@@ -1,5 +1,4 @@
 <?php
-
 namespace Model;
 
 abstract class Connect 
@@ -7,14 +6,14 @@ abstract class Connect
     const HOST = "localhost";
     const DB = "cinema_pierre";
     const USER = "root";
-    const PASS = "root";
+    const PASS = "";
 
-    public static function seConneceter() 
+    public static function seConnecter() 
     {
         try 
         {
             return new \PDO(
-                "mysql:host=".self::HOST. ";dbname=".self::DB."charset=utf8", self::USER, self::PASS);
+                "mysql:host=".self::HOST.";dbname=".self::DB.";charset=utf8", self::USER, self::PASS);
         }
             catch(\PDOException $ex)
             {
@@ -24,8 +23,6 @@ abstract class Connect
     }
 
 }
-
-
 
 
 

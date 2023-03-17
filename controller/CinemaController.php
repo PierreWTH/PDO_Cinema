@@ -8,7 +8,8 @@ class CinemaController
 //lister les films
 
     public function listFilms() 
-    {
+    {   
+        
         $pdo = Connect::seConnecter();
         $requete = $pdo ->query("
             SELECT titre, annee_sortie 
