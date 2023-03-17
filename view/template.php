@@ -8,7 +8,12 @@
 </head>
 <body>
     <nav>
-        <li>Accueil</li>
+        <li>
+            <a href="index.php?action=listFilms">Films<a></li>
+            <a href="index.php?action=listActeurs">Acteurs<a></li>
+            <a href="index.php?action=listRealisateurs">Réalisateurs<a></li>
+            <a href="index.php?action=listRoles">Rôles<a></li>
+        </li>
     </nav>
     <div>
         <main>

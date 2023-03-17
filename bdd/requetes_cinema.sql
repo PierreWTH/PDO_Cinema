@@ -42,12 +42,13 @@ ORDER BY nb_film DESC;
 
 -- Requete F
 
-SELECT p.nom, p.prenom, p.sexe
+SELECT CONCAT(p.nom, p.prenom) as acteur, r.role
 from casting c
+INNER JOIN role r on c.id_role = r.id_role
 INNER JOIN acteur a on c.id_acteur = a.id_acteur
 INNER JOIN personne p on a.id_personne = p.id_personne
 INNER JOIN film f on c.id_film = f.id_film
-WHERE f.id_film = 1;
+
 
 -- Requete G
 
