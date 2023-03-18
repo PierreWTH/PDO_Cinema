@@ -5,14 +5,14 @@ use Model\Connect;
 
 class CinemaController 
 {
-//lister les films
+    //Lister les films
 
     public function listFilms() 
     {   
         
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-        SELECT titre, annee_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, CONCAT(prenom, ' ', nom) as realisateur
+        $requeteListFilms = $pdo->query("
+        SELECT id_film, f.id_realisateur, titre, annee_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, CONCAT(prenom, ' ', nom) as realisateur
         FROM film f
         INNER JOIN realisateur r on f.id_realisateur = r.id_realisateur
         INNER JOIN personne p on r.id_personne = p.id_personne
@@ -21,11 +21,13 @@ class CinemaController
         require "view/listFilms.php";
     }
 
+    // Lister les acteurs
+
     public function listActeurs() 
     {   
         
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
+        $requeteListActeurs = $pdo->query("
         SELECT nom, prenom, date_naissance, sexe
         from personne p
         WHERE p.id_personne IN (SELECT a.id_personne FROM acteur a)
@@ -34,12 +36,14 @@ class CinemaController
         require "view/listActeurs.php";
     }
 
+    // Lister les réalisateurs
+
     public function listRealisateurs() 
     {   
         
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-        SELECT nom, prenom, date_naissance, sexe
+        $requeteListRealisateurs = $pdo->query("
+        SELECT nom, prenom, DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, sexe
         from personne p
         WHERE p.id_personne IN (SELECT r.id_personne FROM realisateur r)
             ");
@@ -47,11 +51,13 @@ class CinemaController
         require "view/listRealisateurs.php";
     }
 
+    // Lister les rôles
+
     public function listRoles() 
     {   
         
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
+        $requeteListRoles = $pdo->query("
         SELECT CONCAT(p.prenom,  ' ', p.nom) as acteur, r.nom_role
         from casting c
         INNER JOIN role r on c.id_role = r.id_role
@@ -63,7 +69,32 @@ class CinemaController
         require "view/listRoles.php";
     }
 
+    // Détails d'un film
+
+    public function detailFilm($id) 
+    {
+        $pdo = Connect::seConnecter();
+        $requeteDetailFilm = $pdo->prepare("
+        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note 
+        FROM film 
+        WHERE id_film = :id ");
+        $requeteDetailFilm->execute(["id" => $id]);
+        require "view/detailFilm.php";
+    }
+   
+    // Détail d'un réalisateur
+
+    public function detailRealisateur($id)
+    {
+        $pdo = Connect::seConnecter();
+        $requeteDetailRealisateur = $pdo->prepare("
+        SELECT CONCAT(prenom, ' ',nom) as identite, sexe,  DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance
+        FROM personne p
+        INNER JOIN realisateur r ON p.id_personne = r.id_personne
+        WHERE id_realisateur =  :id");
+        $requeteDetailRealisateur->execute(["id" => $id]);
+        require "view/detailRealisateur.php";
+    }
+
 }
-
-
 ?>

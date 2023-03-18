@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p> Il y a <?= $requete->rowCount() ?> acteurs </p>
+<p> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
 
 <table>
     <thead>
@@ -13,12 +13,12 @@
     </thead>
     <tbody>
         <?php
-            foreach ($requete -> fetchAll() as $film) { ?>
+            foreach ($requeteListActeurs -> fetchAll() as $acteur) { ?>
                 <tr>
-                    <td> <?= $film["prenom"] ?> </td>
-                    <td> <?= $film["nom"] ?> </td>
-                    <td> <?= $film["date_naissance"] ?> </td>
-                    <td> <?= $film["sexe"] ?> </td>
+                    <td> <?= $acteur["prenom"] ?> </td>
+                    <td> <?= $acteur["nom"] ?> </td>
+                    <td> <?= $acteur["date_naissance"] ?> </td>
+                    <td> <?= $acteur["sexe"] ?> </td>
                 <tr>
         <?php } ?>
     </tbody>
