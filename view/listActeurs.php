@@ -5,20 +5,14 @@
 <table>
     <thead>
         <tr>
-            <th> NOM </th>
-            <th> PRENOM </th>
-            <th> DATE DE NAISSANCE</th>
-            <th> SEXE</th>
+            <th> ACTEUR </th>
         </tr>
     </thead>
     <tbody>
         <?php
             foreach ($requeteListActeurs -> fetchAll() as $acteur) { ?>
                 <tr>
-                    <td> <?= $acteur["prenom"] ?> </td>
-                    <td> <?= $acteur["nom"] ?> </td>
-                    <td> <?= $acteur["date_naissance"] ?> </td>
-                    <td> <?= $acteur["sexe"] ?> </td>
+                    <td><a href="index.php?action=detailActeur&id=<?=$acteur['id_acteur'] ?>"><?= $acteur["identite"] ?> </td></a>
                 <tr>
         <?php } ?>
     </tbody>
