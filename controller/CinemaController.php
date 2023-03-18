@@ -19,81 +19,44 @@ class CinemaController
             ");
         
         require "view/listFilms.php";
-    }
-
-    // Lister les acteurs
-
-    public function listActeurs() 
-    {   
         
-        $pdo = Connect::seConnecter();
-        $requeteListActeurs = $pdo->query("
-        SELECT nom, prenom, date_naissance, sexe
-        from personne p
-        WHERE p.id_personne IN (SELECT a.id_personne FROM acteur a)
-            ");
-        
-        require "view/listActeurs.php";
-    }
-
-    // Lister les réalisateurs
-
-    public function listRealisateurs() 
-    {   
-        
-        $pdo = Connect::seConnecter();
-        $requeteListRealisateurs = $pdo->query("
-        SELECT nom, prenom, DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, sexe
-        from personne p
-        WHERE p.id_personne IN (SELECT r.id_personne FROM realisateur r)
-            ");
-        
-        require "view/listRealisateurs.php";
-    }
-
-    // Lister les rôles
-
-    public function listRoles() 
-    {   
-        
-        $pdo = Connect::seConnecter();
-        $requeteListRoles = $pdo->query("
-        SELECT CONCAT(p.prenom,  ' ', p.nom) as acteur, r.nom_role
-        from casting c
-        INNER JOIN role r on c.id_role = r.id_role
-        INNER JOIN acteur a on c.id_acteur = a.id_acteur
-        INNER JOIN personne p on a.id_personne = p.id_personne
-        INNER JOIN film f on c.id_film = f.id_film
-            ");
-        
-        require "view/listRoles.php";
     }
 
     // Détails d'un film
 
     public function detailFilm($id) 
-    {
+    {   
+        // Requete infos films
         $pdo = Connect::seConnecter();
         $requeteDetailFilm = $pdo->prepare("
-        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note 
+        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note, id_realisateur 
         FROM film 
         WHERE id_film = :id ");
         $requeteDetailFilm->execute(["id" => $id]);
-        require "view/detailFilm.php";
-    }
-   
-    // Détail d'un réalisateur
 
-    public function detailRealisateur($id)
-    {
+        // Requete nom réalisateur
         $pdo = Connect::seConnecter();
-        $requeteDetailRealisateur = $pdo->prepare("
-        SELECT CONCAT(prenom, ' ',nom) as identite, sexe,  DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance
+        $requeteDetailReal = $pdo->prepare("
+        SELECT CONCAT(prenom,' ',nom) as identite
         FROM personne p
         INNER JOIN realisateur r ON p.id_personne = r.id_personne
-        WHERE id_realisateur =  :id");
-        $requeteDetailRealisateur->execute(["id" => $id]);
-        require "view/detailRealisateur.php";
+        INNER JOIN film f on r.id_realisateur = f.id_realisateur
+        WHERE id_film = :id ");
+        $requeteDetailReal->execute(["id" => $id]);
+
+        // Requete Casting
+        $pdo = Connect::seConnecter();
+        $requeteDetailCasting = $pdo->prepare("
+        SELECT CONCAT(p.prenom,' ',p.nom) as identite, r.nom_role
+        from casting c
+        INNER JOIN acteur a ON c.id_acteur = a.id_acteur
+        INNER JOIN personne p ON a.id_personne = p.id_personne
+        INNER JOIN role r ON c.id_role = r.id_role
+        WHERE c.id_film = :id");
+        $requeteDetailCasting->execute(["id" => $id]);
+
+        require "view/detailFilm.php";
+        
     }
 
 }
