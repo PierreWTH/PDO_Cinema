@@ -10,7 +10,12 @@ $realDetail = $requeteDetailReal->fetch();
 <p> Réalisateur :<a href = "index.php?action=detailRealisateur&id=<?=$filmDetail['id_realisateur']?>"> <?= $realDetail['identite'] ?></a><p>
 <p> Durée : <?= $filmDetail["duree_film"] ?> <p>
 <p> Année de sortie : <?= $filmDetail["annee_sortie"] ?> <p>
+<p> Genre : <?= $filmDetail["nom_genre"] ?> <p>
 <p> Note : </p>
+
+<h2>Synopsis</h2>
+
+<p> <?= $filmDetail["synopsis"]?> </p>
 
 <h2>Casting</h2>
 
