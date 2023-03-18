@@ -12,8 +12,9 @@ class RealisateurController
         
         $pdo = Connect::seConnecter();
         $requeteListRealisateurs = $pdo->query("
-        SELECT nom, prenom, DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, sexe
+        SELECT CONCAT(prenom, ' ', nom) as identite, id_realisateur
         from personne p
+        INNER JOIN realisateur r ON p.id_personne = r.id_personne
         WHERE p.id_personne IN (SELECT r.id_personne FROM realisateur r)
             ");
         
@@ -29,7 +30,17 @@ class RealisateurController
         INNER JOIN realisateur r ON p.id_personne = r.id_personne
         WHERE id_realisateur =  :id");
         $requeteDetailRealisateur->execute(["id" => $id]);
+        
+
+        $pdo = Connect::seConnecter();
+        $requeteFilmoRealisateur = $pdo->prepare("
+        SELECT f.titre, id_film
+        FROM film f
+        INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur
+        WHERE r.id_realisateur = :id");
+        $requeteFilmoRealisateur->execute(["id" => $id]);
         require "view/detailRealisateur.php";
+
     }
 
     

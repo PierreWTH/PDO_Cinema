@@ -16,7 +16,7 @@ $acteurDetail = $requeteDetailActeur->fetch();
 <?php
     foreach ($requeteFilmographie-> fetchAll() as $film) { ?>
 
-    <li><p><?=$film['titre']?> (<?=$film['nom_role']?>)</p></li>
+    <li><p><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?=$film['titre']?></a> (<?=$film['nom_role']?>)</p></li>
 
     <?php } ?>
 </ul>

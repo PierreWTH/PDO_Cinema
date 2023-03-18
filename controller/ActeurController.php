@@ -33,7 +33,7 @@ class ActeurController
 
         $pdo = Connect::seConnecter();
         $requeteFilmographie = $pdo->prepare("
-        SELECT f.titre, nom_role
+        SELECT f.titre, nom_role, f.id_film
         from casting c 
         INNER JOIN role r on c.id_role = r.id_role
         INNER JOIN acteur a ON c.id_acteur = a.id_acteur
