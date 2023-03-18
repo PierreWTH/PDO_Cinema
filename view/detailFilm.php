@@ -18,7 +18,7 @@ $realDetail = $requeteDetailReal->fetch();
 <?php
     foreach ($requeteDetailCasting-> fetchAll() as $casting) { ?>
 
-    <li><p><?= $casting['identite']?> (<?=$casting['nom_role'] ?>) </p></li>
+    <li><p><a href="index.php?action=detailActeur&id=<?=$casting['id_acteur'] ?>"><?= $casting['identite']?></a> (<?=$casting['nom_role'] ?>) </p></li>
 
     <?php } ?>
 </ul>

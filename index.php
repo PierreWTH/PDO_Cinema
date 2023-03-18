@@ -31,6 +31,7 @@ if(isset($_GET["action"]))
         case "detailRealisateur" : $ctrlRealisateur-> detailRealisateur($id); break;
 
         case "listRoles" : $ctrlRole -> listRoles(); break;
+        case "detailRole" : $ctrlRole-> detailRole($id); break;
     
     }
 

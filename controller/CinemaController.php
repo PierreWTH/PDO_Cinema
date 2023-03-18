@@ -47,7 +47,7 @@ class CinemaController
         // Requete Casting
         $pdo = Connect::seConnecter();
         $requeteDetailCasting = $pdo->prepare("
-        SELECT CONCAT(p.prenom,' ',p.nom) as identite, r.nom_role
+        SELECT CONCAT(p.prenom,' ',p.nom) as identite, r.nom_role, a.id_acteur
         from casting c
         INNER JOIN acteur a ON c.id_acteur = a.id_acteur
         INNER JOIN personne p ON a.id_personne = p.id_personne

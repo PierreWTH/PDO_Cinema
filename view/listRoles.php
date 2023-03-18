@@ -5,7 +5,6 @@
 <table>
     <thead>
         <tr>
-            <th> ACTEUR</th>
             <th> ROLE </th>
         </tr>
     </thead>
@@ -13,8 +12,7 @@
         <?php
             foreach ($requeteListRoles -> fetchAll() as $role) { ?>
                 <tr>
-                    <td> <?= $role["acteur"] ?> </td>
-                    <td> <?= $role["nom_role"] ?> </td>
+                    <td><a href="index.php?action=detailRole&id=<?=$role['id_role']?>"><?= $role["nom_role"] ?> </td></a>
                     
                 <tr>
         <?php } ?>
