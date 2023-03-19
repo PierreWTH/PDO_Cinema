@@ -29,7 +29,7 @@ class CinemaController
         // Requete infos films
         $pdo = Connect::seConnecter();
         $requeteDetailFilm = $pdo->prepare("
-        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note, synopsis, id_realisateur, nom_genre
+        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note, synopsis, note, id_realisateur, nom_genre
         FROM film f
         INNER JOIN appartenir a ON f.id_film = a.id_film
         INNER JOIN genre g ON a.id_genre = g.id_genre

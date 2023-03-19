@@ -11,7 +11,28 @@ $realDetail = $requeteDetailReal->fetch();
 <p> Durée : <?= $filmDetail["duree_film"] ?> <p>
 <p> Année de sortie : <?= $filmDetail["annee_sortie"] ?> <p>
 <p> Genre : <?= $filmDetail["nom_genre"] ?> <p>
-<p> Note : </p>
+
+<p> Note : 
+
+<?php 
+
+// Boucle pour la notation
+
+$note = $filmDetail['note'];
+
+for ($i = 1; $i <= $note; $i++) {?>
+
+    <i class="fa-solid fa-star"></i>
+
+<?php } 
+
+for ($i = $note - 5; $i < 0; $i++) {?>
+
+    <i class="fa-regular fa-star"></i>
+
+<?php } ?>
+
+</p>
 
 <h2>Synopsis</h2>
 
