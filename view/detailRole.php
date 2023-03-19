@@ -1,4 +1,8 @@
-<?php ob_start();?>
+<?php ob_start();
+
+$roleDetail = $requeteNomRole->fetch();
+
+?>
 
 <!-- Boucle pour l'affichage de chaque acteur qui a joué le rôle -->
 
@@ -16,7 +20,7 @@
 // Définition des variables utilisées dans template
 
 $titre = "Détail des roles";
-$titre_secondaire = "Liste des acteurs ayant incarné ce role";
+$titre_secondaire = "Acteur(s) ayant incarné ".$roleDetail['nom_role'];
 $contenu = ob_get_clean();
 require "view/template.php";
 

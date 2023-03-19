@@ -6,8 +6,6 @@ $realisateurDetail = $requeteDetailRealisateur->fetch();
 
 <!-- Affichage des détails du réalisateur-->
 
-<h2> <?= $realisateurDetail["identite"]?> </h2>
-
 <p> Sexe : <?= $realisateurDetail["sexe"] ?> <p>
 <p> Date de naissance : <?= $realisateurDetail["date_de_naissance"] ?> <p>
 
@@ -29,7 +27,15 @@ $realisateurDetail = $requeteDetailRealisateur->fetch();
 // Définition des variables utilisées dans template
 
 $titre = $realisateurDetail["identite"];
-$titre_secondaire = "Détails du réalisateur";
+
+// Changement du titre secondaire en fonction du sexe
+if ($realisateurDetail['sexe'] == "Homme"){
+    $titre_secondaire = "Détails du réalisateur : ".$realisateurDetail["identite"];
+}
+else{
+    $titre_secondaire = "Détails de la réalisatrice : ".$realisateurDetail["identite"];
+}
+
 $contenu = ob_get_clean();
 require "view/template.php";
 

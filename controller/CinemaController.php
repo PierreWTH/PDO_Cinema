@@ -16,6 +16,7 @@ class CinemaController
         FROM film f
         INNER JOIN realisateur r on f.id_realisateur = r.id_realisateur
         INNER JOIN personne p on r.id_personne = p.id_personne
+        ORDER BY annee_sortie DESC
             ");
         
         require "view/listFilms.php";
@@ -54,7 +55,8 @@ class CinemaController
         INNER JOIN acteur a ON c.id_acteur = a.id_acteur
         INNER JOIN personne p ON a.id_personne = p.id_personne
         INNER JOIN role r ON c.id_role = r.id_role
-        WHERE c.id_film = :id");
+        WHERE c.id_film = :id
+        ORDER BY identite");
         $requeteDetailCasting->execute(["id" => $id]);
 
         require "view/detailFilm.php";

@@ -16,6 +16,7 @@ class RealisateurController
         from personne p
         INNER JOIN realisateur r ON p.id_personne = r.id_personne
         WHERE p.id_personne IN (SELECT r.id_personne FROM realisateur r)
+        ORDER BY identite
             ");
         
         require "view/listRealisateurs.php";

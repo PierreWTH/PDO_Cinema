@@ -16,6 +16,7 @@ class ActeurController
         FROM personne p
         INNER join acteur a ON p.id_personne = a.id_personne
         WHERE p.id_personne IN (SELECT a.id_personne FROM acteur a)
+        ORDER BY identite
             ");
         
         require "view/listActeurs.php";

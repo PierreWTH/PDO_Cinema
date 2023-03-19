@@ -6,6 +6,7 @@ use Controller\CinemaController;
 use Controller\ActeurController;
 use Controller\RealisateurController;
 use Controller\RoleController;
+use Controller\GenreController;
 
 // Chargement automatique des classes
 
@@ -19,8 +20,9 @@ $ctrlCinema = new CinemaController();
 $ctrlActeur = new ActeurController();
 $ctrlRealisateur = new RealisateurController();
 $ctrlRole = new RoleController();
+$ctrlGenre = new GenreController();
 
-// Définition de l'id
+// Récuperation de l'id
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
 
@@ -40,6 +42,9 @@ if(isset($_GET["action"]))
 
         case "listRoles" : $ctrlRole -> listRoles(); break;
         case "detailRole" : $ctrlRole-> detailRole($id); break;
+
+        case "listGenres" : $ctrlGenre -> listGenres(); break;
+        case "detailGenre" : $ctrlGenre-> detailGenre($id); break;
     
     }
 

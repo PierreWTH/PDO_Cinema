@@ -5,9 +5,7 @@ $realDetail = $requeteDetailReal->fetch();
 
 ?>
 
-<!-- Afficha des détails du film-->
-
-<h2> <?= $filmDetail["titre"]?> </h2>
+<!-- Affichage des détails du film-->
 
 <p> Réalisateur :<a href = "index.php?action=detailRealisateur&id=<?=$filmDetail['id_realisateur']?>"> <?= $realDetail['identite'] ?></a><p>
 <p> Durée : <?= $filmDetail["duree_film"] ?> <p>
@@ -59,7 +57,7 @@ for ($i = $note - 5; $i < 0; $i++) {?>
 // Définition des variables utilisées dans template
 
 $titre = "Détail du film";
-$titre_secondaire = "Liste des films";
+$titre_secondaire = "Détail du film : ".$filmDetail["titre"];
 $contenu = ob_get_clean();
 require "view/template.php";
 
