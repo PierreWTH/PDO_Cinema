@@ -11,24 +11,23 @@
     <title><?=$titre?></title>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class = "nav-logo">
-                <p>PDO Cinema</p>
-            </div>
+    <nav>
+        <div class = "nav-logo">
+            <p>PDO Cinema</p>
+        </div>
+        
+        <div class = "nav-a">
             
-            <div class = "nav-a">
-                    <a href="index.php?action=listFilms">Films<a>
-                    <a href="index.php?action=listActeurs">Acteurs<a>
-                    <a href="index.php?action=listRealisateurs">Réalisateurs<a>
-                    <a href="index.php?action=listRoles">Rôles<a>
-                    <a href="index.php?action=listGenres">Genres<a>
-            </div>
-        </nav>
-    </header>
+                <a href="index.php?action=listFilms">Films<a>
+                <a href="index.php?action=listActeurs">Acteurs<a>
+                <a href="index.php?action=listRealisateurs">Réalisateurs<a>
+                <a href="index.php?action=listRoles">Rôles<a>
+                <a href="index.php?action=listGenres">Genres<a>
+        </div>
+    </nav>
     <div>
         <main>
-            <div>
+            <div class= "contenu">
                 <h2><?= $titre_secondaire ?></h2>
                 <?= $contenu ?>
             </div>

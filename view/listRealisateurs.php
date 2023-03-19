@@ -2,7 +2,7 @@
 
 <!-- Compter les réalisateurs -->
 
-<p> Il y a <?= $requeteListRealisateurs->rowCount() ?> réalisateurs</p>
+<p class = "p-count"> Il y a <?= $requeteListRealisateurs->rowCount() ?> réalisateurs</p>
 
 <!-- Tableau avec boucle pour afficher chaque réalisateur -->
 

@@ -4,7 +4,7 @@
 
 <!-- Compter les rôles -->
 
-<p> Il y a <?= $requeteListRoles->rowCount() ?> rôles </p>
+<p class = "p-count"> Il y a <?= $requeteListRoles->rowCount() ?> rôles </p>
 
 <!-- Tableau avec boucle pour afficher chaque rôle -->
 

@@ -2,7 +2,7 @@
 
 <!-- Compter les acteurs -->
 
-<p> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
+<p class = "p-count"> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
 
 <!-- Tableau avec boucle pour afficher chaque acteur-->
 

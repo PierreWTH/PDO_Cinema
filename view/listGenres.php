@@ -2,7 +2,7 @@
 
 <!-- Compter les genres -->
 
-<p> Il y a <?= $requeteListGenres->rowCount() ?> genres </p>
+<p class = "p-count"> Il y a <?= $requeteListGenres->rowCount() ?> genres </p>
 
 <!-- Tableau avec boucle pour afficher chaque genre -->
 

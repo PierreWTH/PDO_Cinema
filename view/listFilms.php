@@ -2,16 +2,15 @@
 
 <!-- Compter les films -->
 
-<p> Il y a <?= $requeteListFilms->rowCount() ?> films </p>
+<p class = "p-count"> Il y a <?= $requeteListFilms->rowCount() ?> films </p>
 
 <!-- Ajouter un film -->
 
-<button> <a> Ajouter un film </a> </button>
 
 <!-- Tableau avec boucle pour afficher chaque film -->
 
-<table class="table">
-    <thead class= "thead-dark">
+<table class="table-film">
+    <thead class=>
         <tr>
             <th> TITRE </th>
             <th> ANNEE SORTIE </th>
