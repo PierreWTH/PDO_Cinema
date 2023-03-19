@@ -26,7 +26,7 @@ class CinemaController
 
     public function detailFilm($id) 
     {   
-        // Requete infos films
+        // Afficher infos films
         $pdo = Connect::seConnecter();
         $requeteDetailFilm = $pdo->prepare("
         SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note, synopsis, note, id_realisateur, nom_genre
@@ -36,7 +36,7 @@ class CinemaController
         WHERE f.id_film = :id ");
         $requeteDetailFilm->execute(["id" => $id]);
 
-        // Requete nom réalisateur
+        // Afficher nom prénom réalisateur
         $pdo = Connect::seConnecter();
         $requeteDetailReal = $pdo->prepare("
         SELECT CONCAT(prenom,' ',nom) as identite
@@ -46,7 +46,7 @@ class CinemaController
         WHERE id_film = :id ");
         $requeteDetailReal->execute(["id" => $id]);
 
-        // Requete Casting
+        // Afficher le Casting
         $pdo = Connect::seConnecter();
         $requeteDetailCasting = $pdo->prepare("
         SELECT CONCAT(p.prenom,' ',p.nom) as identite, r.nom_role, a.id_acteur

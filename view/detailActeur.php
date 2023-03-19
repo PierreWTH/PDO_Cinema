@@ -4,6 +4,8 @@ $acteurDetail = $requeteDetailActeur->fetch();
 
 ?>
 
+<!-- Détail des acteurs -->
+
 <h2> <?= $acteurDetail["identite"]?> </h2>
 
 <p> Sexe : <?= $acteurDetail["sexe"] ?> <p>
@@ -11,6 +13,8 @@ $acteurDetail = $requeteDetailActeur->fetch();
 
 
 <h2>Filmographie</h2>
+
+<!-- Boucle pour afficher chaque film de la filmographie-->
 
 <ul>
 <?php
@@ -22,6 +26,8 @@ $acteurDetail = $requeteDetailActeur->fetch();
 </ul>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = $acteurDetail["identite"];
 $titre_secondaire = "Détails de l'acteur";

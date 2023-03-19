@@ -1,3 +1,5 @@
+<!-- Template de base pour toutes les pages -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -1,6 +1,10 @@
 <?php ob_start(); ?>
 
+<!-- Compter les acteurs -->
+
 <p> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
+
+<!-- Tableau avec boucle pour afficher chaque acteur-->
 
 <table>
     <thead>
@@ -19,6 +23,8 @@
 </table>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = "Liste des acteurs";
 $titre_secondaire = "Liste des acteurs";

@@ -5,7 +5,7 @@ use Model\Connect;
 
 class RealisateurController 
 {
-    //Lister les Acteurs
+    //Lister les Réalisateurs
 
     public function listRealisateurs() 
     {   
@@ -22,7 +22,8 @@ class RealisateurController
     }
 
     public function detailRealisateur($id)
-    {
+    {   
+        // Identité d'un réalisateurs
         $pdo = Connect::seConnecter();
         $requeteDetailRealisateur = $pdo->prepare("
         SELECT CONCAT(prenom, ' ',nom) as identite, sexe,  DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance
@@ -31,7 +32,7 @@ class RealisateurController
         WHERE id_realisateur =  :id");
         $requeteDetailRealisateur->execute(["id" => $id]);
         
-
+        // Films réalisés
         $pdo = Connect::seConnecter();
         $requeteFilmoRealisateur = $pdo->prepare("
         SELECT f.titre, id_film

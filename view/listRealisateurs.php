@@ -1,6 +1,10 @@
 <?php ob_start(); ?>
 
+<!-- Compter les réalisateurs -->
+
 <p> Il y a <?= $requeteListRealisateurs->rowCount() ?> réalisateurs</p>
+
+<!-- Tableau avec boucle pour afficher chaque réalisateur -->
 
 <table>
     <thead>
@@ -19,6 +23,8 @@
 </table>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = "Liste des réalisateurs";
 $titre_secondaire = "Liste des réalisateurs";

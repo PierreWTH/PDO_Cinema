@@ -1,6 +1,10 @@
 <?php ob_start(); ?>
 
+<!-- Compter les films -->
+
 <p> Il y a <?= $requeteListFilms->rowCount() ?> films </p>
+
+<!-- Tableau avec boucle pour afficher chaque film -->
 
 <table>
     <thead>
@@ -25,6 +29,8 @@
 </table>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = "Liste des films";
 $titre_secondaire = "Liste des films";

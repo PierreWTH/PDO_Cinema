@@ -1,10 +1,6 @@
-<?php ob_start();
+<?php ob_start();?>
 
-
-
-?>
-
-
+<!-- Boucle pour l'affichage de chaque acteur qui a joué le rôle -->
 
 <ul>
 <?php
@@ -16,6 +12,8 @@
 </ul>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = "Détail des roles";
 $titre_secondaire = "Liste des acteurs ayant incarné ce role";

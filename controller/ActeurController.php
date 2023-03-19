@@ -21,8 +21,11 @@ class ActeurController
         require "view/listActeurs.php";
     }
 
+    // Détail d'un acteur
+
     public function detailActeur($id)
-    {
+    {   
+        // Identité
         $pdo = Connect::seConnecter();
         $requeteDetailActeur = $pdo->prepare("
         SELECT CONCAT(prenom,' ',nom) as identite, DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, sexe
@@ -31,6 +34,7 @@ class ActeurController
         WHERE a.id_acteur = :id");
         $requeteDetailActeur->execute(["id" => $id]);
 
+        // Filmographie
         $pdo = Connect::seConnecter();
         $requeteFilmographie = $pdo->prepare("
         SELECT f.titre, nom_role, f.id_film

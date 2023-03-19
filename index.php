@@ -1,22 +1,30 @@
 <?php
 
+// Définition des controllers utilisés
+
 use Controller\CinemaController;
 use Controller\ActeurController;
 use Controller\RealisateurController;
 use Controller\RoleController;
 
+// Chargement automatique des classes
 
 spl_autoload_register(function ($class_name){
     require str_replace("\\","/", $class_name) . ".php";
 });
+
+// Définition des instances
 
 $ctrlCinema = new CinemaController();
 $ctrlActeur = new ActeurController();
 $ctrlRealisateur = new RealisateurController();
 $ctrlRole = new RoleController();
 
+// Définition de l'id
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
+
+// Traitement des différents retours de action
 
 if(isset($_GET["action"]))
 {

@@ -1,6 +1,10 @@
 <?php ob_start(); ?>
 
+<!-- Compter les rôles -->
+
 <p> Il y a <?= $requeteListRoles->rowCount() ?> rôles </p>
+
+<!-- Tableau avec boucle pour afficher chaque rôle -->
 
 <table>
     <thead>
@@ -20,6 +24,8 @@
 </table>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = "Liste des rôles";
 $titre_secondaire = "Liste des rôles";

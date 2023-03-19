@@ -25,7 +25,8 @@ class RoleController
     }
 
     public function detailRole($id)
-    {
+    {   
+        // Acteurs qui ont joué ce role
         $pdo = Connect::seConnecter();
         $requeteDetailRole = $pdo->prepare("
         SELECT CONCAT(p.prenom, ' ', p.nom) as identite, f.titre, a.id_acteur, f.id_film

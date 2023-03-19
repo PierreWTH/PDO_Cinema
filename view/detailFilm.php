@@ -5,18 +5,19 @@ $realDetail = $requeteDetailReal->fetch();
 
 ?>
 
+<!-- Afficha des détails du film-->
+
 <h2> <?= $filmDetail["titre"]?> </h2>
 
 <p> Réalisateur :<a href = "index.php?action=detailRealisateur&id=<?=$filmDetail['id_realisateur']?>"> <?= $realDetail['identite'] ?></a><p>
 <p> Durée : <?= $filmDetail["duree_film"] ?> <p>
 <p> Année de sortie : <?= $filmDetail["annee_sortie"] ?> <p>
 <p> Genre : <?= $filmDetail["nom_genre"] ?> <p>
-
 <p> Note : 
 
-<?php 
+<!-- Boucle pour la notation-->
 
-// Boucle pour la notation
+<?php 
 
 $note = $filmDetail['note'];
 
@@ -38,7 +39,11 @@ for ($i = $note - 5; $i < 0; $i++) {?>
 
 <p> <?= $filmDetail["synopsis"]?> </p>
 
+
+
 <h2>Casting</h2>
+
+<!-- Boucle pour lister chaque acteur du casting -->
 
 <ul>
 <?php
@@ -50,6 +55,8 @@ for ($i = $note - 5; $i < 0; $i++) {?>
 </ul>
 
 <?php
+
+// Définition des variables utilisées dans template
 
 $titre = "Détail du film";
 $titre_secondaire = "Liste des films";

@@ -3,10 +3,14 @@ namespace Model;
 
 abstract class Connect 
 {
+    // Informations de la base de donnée
+
     const HOST = "localhost";
     const DB = "cinema_pierre";
     const USER = "root";
     const PASS = "root";
+
+    // Fonction pour se connecter a la bdd
 
     public static function seConnecter() 
     {
