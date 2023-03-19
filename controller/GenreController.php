@@ -34,7 +34,7 @@ class GenreController
         // Films qui appartiennent a ce genre
         $pdo = Connect::seConnecter();
         $requeteDetailGenre = $pdo->prepare("
-        SELECT g.id_genre, f.titre, nom_genre
+        SELECT g.id_genre, f.titre, nom_genre, f.id_film
         FROM genre g
         INNER JOIN appartenir a ON g.id_genre = a.id_genre
         INNER JOIN film f ON a.id_film = f.id_film

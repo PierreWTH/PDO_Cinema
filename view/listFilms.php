@@ -4,10 +4,14 @@
 
 <p> Il y a <?= $requeteListFilms->rowCount() ?> films </p>
 
+<!-- Ajouter un film -->
+
+<button> <a> Ajouter un film </a> </button>
+
 <!-- Tableau avec boucle pour afficher chaque film -->
 
-<table>
-    <thead>
+<table class="table">
+    <thead class= "thead-dark">
         <tr>
             <th> TITRE </th>
             <th> ANNEE SORTIE </th>

@@ -8,7 +8,7 @@ $genreDetail = $requeteNomGenre->fetch()
 <?php
     foreach ($requeteDetailGenre-> fetchAll() as $genreFilm) { ?>
 
-    <li><p><a href="index.php?action=detailFilm&id=<?=$genreFilm['titre']?>"> <?=$genreFilm['titre']?></a></p></li>
+    <li><p><a href="index.php?action=detailFilm&id=<?=$genreFilm['id_film']?>"> <?=$genreFilm['titre']?></a></p></li>
 
     <?php } ?>
 </ul>
