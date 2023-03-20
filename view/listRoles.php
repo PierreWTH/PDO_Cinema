@@ -6,6 +6,15 @@
 
 <p class = "p-count"> Il y a <?= $requeteListRoles->rowCount() ?> rôles </p>
 
+<!-- Ajouter un rôle-->
+
+<form action = "index.php?action=addRole" method = "post" class = "form-add-film">
+ 
+        <input type="text" name ="nomRole" placeholder = "Nom du role">
+        
+        <input type="submit" name = "submit" value ="Ajouter">   
+</form>
+
 <!-- Tableau avec boucle pour afficher chaque rôle -->
 
 <table>

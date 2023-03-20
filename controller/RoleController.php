@@ -51,5 +51,30 @@ class RoleController
 
         require "view/detailRole.php";
     }
+
+    public function addRole()
+    {
+
+        if (isset($_POST['submit']))
+        { 
+        // Filtrage des données
+        $pdo = Connect::seConnecter();
+
+        $nomRole= filter_input(INPUT_POST, "nomRole", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        $requeteAddRole = $pdo->prepare("
+        INSERT INTO role (nom_role)
+            VALUES ( :nomRole)
+        ");
+        $requeteAddRole->execute(["nomRole" => $nomRole]);
+
+        header("Location: index.php?action=listRoles");
+        }
+
+    }
+
 }
+
+
+
 ?>

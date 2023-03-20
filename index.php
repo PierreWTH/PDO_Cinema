@@ -45,6 +45,7 @@ if(isset($_GET["action"]))
 
         case "listRoles" : $ctrlRole -> listRoles(); break;
         case "detailRole" : $ctrlRole-> detailRole($id); break;
+        case "addRole" : $ctrlRole -> addRole(); break;
 
         case "listGenres" : $ctrlGenre -> listGenres(); break;
         case "detailGenre" : $ctrlGenre-> detailGenre($id); break;
