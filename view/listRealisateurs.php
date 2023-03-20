@@ -16,7 +16,7 @@
        
         <input type="text" name ="sexeReal" placeholder = "Sexe">
         
-        <input type="date" name ="ageReal" placeholder = "Date de Naissance">
+        <input type="date" name ="dateNaissanceReal" placeholder = "Date de Naissance">
           
         <input type="submit" name = "submit" value ="Ajouter">   
 </form>

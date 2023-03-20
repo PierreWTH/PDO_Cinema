@@ -1,5 +1,4 @@
 <?php
-
 namespace Controller;
 use Model\Connect;
 
@@ -50,6 +49,7 @@ class RealisateurController
     {
         if (isset($_POST['submit']))
         { 
+            var_dump($_POST['submit']);
             // Filtrage des données
             $pdo = Connect::seConnecter();
 
@@ -64,19 +64,18 @@ class RealisateurController
             ");
             $requeteAddPersonneReal->execute(["nomReal" => $nomReal, "prenomReal" => $prenomReal, "sexeReal" => $sexeReal , "dateNaissanceReal" => $dateNaissanceReal]);
             
-
             // On récupère le dernier ID rentré dans la BDD
             $idReal = $pdo -> lastInsertId();
 
             $requeteAddReal= $pdo->prepare("
-            INSERT INTO realisateur id_personne
-            VALUES :id 
+            INSERT INTO realisateur (id_personne)
+            VALUES (:id)
             ");
             $requeteAddReal->execute(["id"=> $idReal]);
             
         }
 
-        header("Location: index.php?action=listRealisateurs");
+        header("Location: index.php?action=listFilms");
     }
     
 
