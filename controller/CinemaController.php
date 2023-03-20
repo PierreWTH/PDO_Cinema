@@ -81,11 +81,11 @@ class CinemaController
     public function addFilm()
     {
 
-        if (isset($_POST["submit"]))
-        {
+        if (isset($_POST['submit']))
+        { 
             // Filtrage des données
             $pdo = Connect::seConnecter();
-            
+
             $titreFilm = filter_input(INPUT_POST, "titreFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $synopsisFilm = filter_input(INPUT_POST, "synopsisFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortieFilm = filter_input(INPUT_POST, "anneeSortieFilm", FILTER_VALIDATE_INT);
@@ -100,9 +100,10 @@ class CinemaController
             ");
             $requeteAddFilm->execute(["titreFilm" => $titreFilm, "synopsisFilm" => $synopsisFilm, "anneeSortieFilm" => $anneeSortieFilm , "dureeFilm" => $dureeFilm, "noteFilm" => $noteFilm, "realisateurFilm" => $realisateurFilm,]);
             
-            require "view/listFilms.php";
+            
         }
 
+        header("Location: index.php?action=listFilms");
     }
 
 
