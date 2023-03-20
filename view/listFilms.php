@@ -2,7 +2,7 @@
 
 <!-- Compter les films -->
 
-<!-- <p class = "p-count"> Il y a <?= $requeteListFilms->rowCount() ?> films </p> -->
+<p class = "p-count"> Il y a <?= $requeteListFilms->rowCount() ?> films </p> 
 
 <!-- Ajouter un film -->
 
@@ -28,6 +28,19 @@
         
         <option value="<?= $real["id_realisateur"] ?>"><?= $real["identite"] ?></option>
     <?php } ?>
+        </select>
+
+        <!--Affichage liste des genres -->
+        <select name="genreFilm" placeholder = "Nom du genre">
+            <option value="">Genre</option>
+            <?php
+        foreach($requeteFormListGenre->fetchAll() as $genre){ ?>
+        
+        <option value="<?= $genre["id_genre"] ?>"><?= $genre["nom_genre"] ?></option>
+    <?php } ?>
+          
+        </select>
+
           
         <input type="submit" name = "submit" value ="Ajouter">   
 </form>

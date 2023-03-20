@@ -92,14 +92,22 @@ class CinemaController
             $dureeFilm = filter_input(INPUT_POST, "dureeFilm", FILTER_VALIDATE_INT);
             $noteFilm = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_INT);
             $realisateurFilm =  filter_input(INPUT_POST, "id_realisateurFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            
+            $genreFilm = filter_input(INPUT_POST, "genreFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $requeteAddFilm = $pdo->prepare("
             INSERT INTO film (titre, synopsis, annee_sortie, duree, note, id_realisateur)
                 VALUES ( :titreFilm, :synopsisFilm, :anneeSortieFilm, :dureeFilm, :noteFilm, :realisateurFilm)
             ");
-            $requeteAddFilm->execute(["titreFilm" => $titreFilm, "synopsisFilm" => $synopsisFilm, "anneeSortieFilm" => $anneeSortieFilm , "dureeFilm" => $dureeFilm, "noteFilm" => $noteFilm, "realisateurFilm" => $realisateurFilm,]);
+            $requeteAddFilm->execute(["titreFilm" => $titreFilm, "synopsisFilm" => $synopsisFilm, "anneeSortieFilm" => $anneeSortieFilm , "dureeFilm" => $dureeFilm, "noteFilm" => $noteFilm, "realisateurFilm" => $realisateurFilm]);
             
+
+            // On récupère le dernier ID rentré dans la BDD
+            $idFilm = $pdo -> lastInsertId();
+
+            $requeteGenreFilm = $pdo->prepare("
+            INSERT INTO appartenir (id_film, id_genre)
+            VALUES (:id, :genre)
+            ");
+            $requeteGenreFilm->execute(["id"=> $idFilm, "genre" => $genreFilm]);
             
         }
 
