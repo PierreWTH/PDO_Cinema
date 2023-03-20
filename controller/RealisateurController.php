@@ -45,6 +45,39 @@ class RealisateurController
 
     }
 
+
+    public function addRealisateur()
+    {
+        if (isset($_POST['submit']))
+        { 
+            // Filtrage des données
+            $pdo = Connect::seConnecter();
+
+            $prenomReal = filter_input(INPUT_POST, "prenomReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nomReal = filter_input(INPUT_POST, "nomReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexeReal = filter_input(INPUT_POST, "sexeReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissanceReal = filter_input(INPUT_POST, "dateNaissanceReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            $requeteAddPersonneReal = $pdo->prepare("
+            INSERT INTO personne (nom, prenom, sexe, date_naissance)
+                VALUES ( :nomReal, :prenomReal, :sexeReal, :dateNaissanceReal)
+            ");
+            $requeteAddPersonneReal->execute(["nomReal" => $nomReal, "prenomReal" => $prenomReal, "sexeReal" => $sexeReal , "dateNaissanceReal" => $dateNaissanceReal]);
+            
+
+            // On récupère le dernier ID rentré dans la BDD
+            $idReal = $pdo -> lastInsertId();
+
+            $requeteAddReal= $pdo->prepare("
+            INSERT INTO realisateur id_personne
+            VALUES :id 
+            ");
+            $requeteAddReal->execute(["id"=> $idReal]);
+            
+        }
+
+        header("Location: index.php?action=listRealisateurs");
+    }
     
 
 }
