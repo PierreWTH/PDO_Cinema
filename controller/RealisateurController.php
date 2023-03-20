@@ -49,7 +49,6 @@ class RealisateurController
     {
         if (isset($_POST['submit']))
         { 
-            var_dump($_POST['submit']);
             // Filtrage des données
             $pdo = Connect::seConnecter();
 

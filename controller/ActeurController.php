@@ -51,5 +51,36 @@ class ActeurController
 
     }
     
+    public function addActeur()
+    {
+        if (isset($_POST['submit']))
+        { 
+            // Filtrage des données
+            $pdo = Connect::seConnecter();
+
+            $prenomActeur = filter_input(INPUT_POST, "prenomActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nomActeur = filter_input(INPUT_POST, "nomActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexeActeur= filter_input(INPUT_POST, "sexeActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissanceActeur= filter_input(INPUT_POST, "dateNaissanceActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            $requeteAddPersonneActeur = $pdo->prepare("
+            INSERT INTO personne (nom, prenom, sexe, date_naissance)
+                VALUES ( :nomActeur, :prenomActeur, :sexeActeur, :dateNaissanceActeur)
+            ");
+            $requeteAddPersonneActeur->execute(["nomActeur" => $nomActeur, "prenomActeur" => $prenomActeur, "sexeActeur" => $sexeActeur , "dateNaissanceActeur" => $dateNaissanceActeur]);
+            
+            // On récupère le dernier ID rentré dans la BDD
+            $idActeur = $pdo -> lastInsertId();
+
+            $requeteAddActeur= $pdo->prepare("
+            INSERT INTO acteur (id_personne)
+            VALUES (:id)
+            ");
+            $requeteAddActeur->execute(["id"=> $idActeur]);
+            
+        }
+
+        header("Location: index.php?action=listActeurs");
+    }
 }
 ?>

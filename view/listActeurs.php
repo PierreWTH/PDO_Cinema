@@ -4,6 +4,19 @@
 
 <p class = "p-count"> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
 
+<form action = "index.php?action=addActeur" method = "post" class = "form-add-film">
+ 
+        <input type="text" name ="prenomActeur" placeholder = "Prenom">
+        
+        <input type="text" name ="nomActeur"  placeholder = "Nom">
+       
+        <input type="text" name ="sexeActeur" placeholder = "Sexe">
+        
+        <input type="date" name ="dateNaissanceActeur" placeholder = "Date de Naissance">
+          
+        <input type="submit" name = "submit" value ="Ajouter">   
+</form>
+
 <!-- Tableau avec boucle pour afficher chaque acteur-->
 
 <table>
