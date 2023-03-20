@@ -6,6 +6,33 @@
 
 <!-- Ajouter un film -->
 
+<button class ="add-film-button">Ajouter un film</button>
+
+<form action = "index.php?action=addFilm" method = "POST" class = "form-add-film">
+    <div class = "add-film">
+        
+        <input type="text" name ="titreFilm" id="titreFilm" placeholder = "Titre">
+        
+        <input type="text" name ="synopsisFilm" id="synopsisFilm" placeholder = "Synopsis">
+       
+        <input type="number" name ="anneeSortieFilm" id="anneeSortieFilm" placeholder = "Année de sortie">
+        
+        <input type="number" name ="dureeFilm" id="dureeFilm" placeholder = "Durée en minute">
+        
+        <input type="number" name = "noteFilm" id="noteFilm" placeholder = "Note">
+
+        <!--Affichage liste des réalisteurs -->
+        <select name="id_realisateurFilm" id="id_realisateurFilm" placeholder = "Nom du réalisateur">
+            <option value="">Réalisateur</option>
+            <?php
+        foreach($requeteFormListReal->fetchAll() as $real){ ?>
+        
+        <option value="<?= $real["id_realisateur"] ?>"><?= $real["identite"] ?></option>
+    <?php } ?>
+          
+        <input type="submit" name = "submit" value ="Ajouter">   
+    </div>
+</form>
 
 <!-- Tableau avec boucle pour afficher chaque film -->
 
