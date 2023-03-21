@@ -6,7 +6,9 @@
 
 <!-- Ajouter un Genre-->
 
-<form action = "index.php?action=addGenre" method = "post" class = "form-add-film">
+<button id="togg1">Ajouter un genre</button>
+
+<form action = "index.php?action=addGenre" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="nomGenre" placeholder = "Nom du genre">
         

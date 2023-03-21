@@ -62,6 +62,9 @@ nav a{
 
 /**** FORMULAIRE *****/
 
+.form-add-film {
+    display: none;
+}
 
 
 

@@ -9,7 +9,6 @@ class ActeurController
 
     public function listActeurs() 
     {   
-        
         $pdo = Connect::seConnecter();
         $requeteListActeurs = $pdo->query("
         SELECT CONCAT(prenom,' ',nom) as identite, date_naissance, sexe, a.id_acteur
@@ -17,6 +16,28 @@ class ActeurController
         INNER join acteur a ON p.id_personne = a.id_personne
         WHERE p.id_personne IN (SELECT a.id_personne FROM acteur a)
         ORDER BY identite
+            ");
+
+        // Afficher film pour formulaire casting
+        $pdo = Connect::seConnecter();
+        $requeteListFilmsCastingForm= $pdo->query("
+        SELECT id_film, titre
+        FROM film 
+            ");
+
+        // Afficher acteurs pour formulaire casting
+        $pdo = Connect::seConnecter();
+        $requeteListActeursCastingForm = $pdo->query("
+        SELECT a.id_acteur, CONCAT(p.prenom,' ',p.nom) as identite
+        FROM acteur a 
+        INNER JOIN personne p ON a.id_personne = p.id_personne  
+            ");
+
+        // Afficher roles pour formulaire casting
+        $pdo = Connect::seConnecter();
+        $requeteListRolesCastingForm = $pdo->query("
+        SELECT id_role, nom_role
+        FROM role r   
             ");
         
         require "view/listActeurs.php";
@@ -82,5 +103,38 @@ class ActeurController
 
         header("Location: index.php?action=listActeurs");
     }
+
+    public function addCasting()
+    {
+        if (isset($_POST['submit']))
+        { 
+            // Filtrage des données
+            $pdo = Connect::seConnecter();
+
+            $idFilm = filter_input(INPUT_POST, "idFilm", FILTER_VALIDATE_INT);
+            $idActeur = filter_input(INPUT_POST, "idActeur",FILTER_VALIDATE_INT);
+            $idRole = filter_input(INPUT_POST, "idRole", FILTER_VALIDATE_INT);
+            
+            $requeteAddCasting = $pdo->prepare("
+            INSERT INTO casting (id_film, id_acteur, id_role)
+                VALUES ( :idFilm, :idActeur, :idRole)
+            ");
+            $requeteAddCasting->execute(["idFilm" => $idFilm, "idActeur" => $idActeur, "idRole" => $idRole]); 
+            
+        }
+
+        header("Location: index.php?action=listActeurs");
+    }
+
+
+
+
+
+
+
+
+
 }
+
+
 ?>

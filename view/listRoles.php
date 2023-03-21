@@ -8,7 +8,9 @@
 
 <!-- Ajouter un rôle-->
 
-<form action = "index.php?action=addRole" method = "post" class = "form-add-film">
+<button id="togg1">Ajouter un rôle</button>
+
+<form action = "index.php?action=addRole" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="nomRole" placeholder = "Nom du role">
         

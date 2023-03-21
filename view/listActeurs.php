@@ -1,14 +1,17 @@
 <?php ob_start(); ?>
 
-<!-- Compter les acteurs -->
+<!-- COMPTER LES ACTEURS -->
 
 <p class = "p-count"> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
 
-<!-- Ajouter un acteur -->
+<!-- Boutons d'ajout -->
 
-<button class ="add-film-button">Ajouter un acteur</button>
+<button id="togg1">Ajouter un acteur</button>
+<button id = "togg2">Ajouter un casting</button>
 
-<form action = "index.php?action=addActeur" method = "post" class = "form-add-film">
+<!-- AJOUTER UN ACTEUR -->
+
+<form action = "index.php?action=addActeur" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="prenomActeur" placeholder = "Prenom">
         
@@ -21,7 +24,51 @@
         <input type="submit" name = "submit" value ="Ajouter">   
 </form>
 
-<!-- Tableau avec boucle pour afficher chaque acteur-->
+<!-- AJOUTER UN CASTING-->
+
+
+<!--Formulaire ajout casting -->
+<form action = "index.php?action=addCasting" method = "post" class = "form-add-film" id="d2">
+
+        <!--Affichage des films -->
+        <select name="idFilm" placeholder = "Film">
+            <option value="">Film</option>
+            <?php
+        foreach($requeteListFilmsCastingForm->fetchAll() as $film){ ?>
+        
+        <option value="<?= $film["id_film"] ?>"><?= $film["titre"] ?></option>
+    <?php } ?>
+
+        </select>
+
+        <!--Affichage des acteurs -->
+        <select name="idActeur" placeholder = "Acteur">
+            <option value="">Acteur</option>
+            <?php
+        foreach($requeteListActeursCastingForm->fetchAll() as $acteur){ ?>
+        
+        <option value="<?= $acteur["id_acteur"] ?>"><?= $acteur["identite"] ?></option>
+    <?php } ?>
+          
+        </select>
+
+        <!--Affichage des roles -->
+        <select name="idRole" placeholder = "Role">
+            <option value="">Role</option>
+            <?php
+        foreach($requeteListRolesCastingForm->fetchAll() as $role){ ?>
+        
+        <option value="<?= $role["id_role"] ?>"><?= $role["nom_role"] ?></option>
+    <?php } ?>
+          
+        </select>
+
+          
+        <input type="submit" name = "submit" value ="Ajouter">   
+</form>
+
+
+<!-- TABLEAU AVEC BOUCLE POUR AFFICHER CHAQUE ACTEUR-->
 
 <table>
     <thead>
@@ -41,7 +88,7 @@
 
 <?php
 
-// Définition des variables utilisées dans template
+// DEFINITION DES VARIABLES UTILISÉES DANS TEMPLATE
 
 $titre = "Liste des acteurs";
 $titre_secondaire = "Liste des acteurs";

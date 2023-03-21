@@ -74,7 +74,7 @@ class RealisateurController
             
         }
 
-        header("Location: index.php?action=listFilms");
+        header("Location: index.php?action=listRealisateurs");
     }
     
 

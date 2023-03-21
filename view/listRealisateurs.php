@@ -4,11 +4,11 @@
 
 <p class = "p-count"> Il y a <?= $requeteListRealisateurs->rowCount() ?> réalisateurs</p>
 
-<!-- Ajouter un film -->
+<!-- Ajouter un Réalisateur  -->
 
-<button class ="add-film-button">Ajouter un Réalisateur</button>
+<button id="togg1">Ajouter un Réalisateur</button>
 
-<form action = "index.php?action=addRealisateur" method = "post" class = "form-add-film">
+<form action = "index.php?action=addRealisateur" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="prenomReal" placeholder = "Prenom">
         

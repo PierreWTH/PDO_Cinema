@@ -6,9 +6,9 @@
 
 <!-- Ajouter un film -->
 
-<button class ="add-film-button">Ajouter un film</button>
+<button id="togg1">Ajouter un film</button>
 
-<form action = "index.php?action=addFilm" method = "post" class = "form-add-film">
+<form action = "index.php?action=addFilm" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="titreFilm" placeholder = "Titre">
         
