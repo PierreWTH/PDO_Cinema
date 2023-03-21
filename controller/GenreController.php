@@ -55,6 +55,8 @@ class GenreController
 
         $nomGenre= filter_input(INPUT_POST, "nomGenre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+        if ($$nomGenre)
+        {
         $requeteAddGenre = $pdo->prepare("
         INSERT INTO genre (nom_genre)
             VALUES ( :nomGenre)
@@ -62,6 +64,8 @@ class GenreController
         $requeteAddGenre->execute(["nomGenre" => $nomGenre]);
 
         header("Location: index.php?action=listGenres");
+        }
+    
         }
 
     }
