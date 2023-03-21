@@ -1,13 +1,14 @@
 <?php ob_start(); ?>
 
 <!-- COMPTER LES ACTEURS -->
-
-<p class = "p-count"> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs </p>
-
+<div class = "entete">
+<p class = "p-count"> Il y a <?= $requeteListActeurs->rowCount() ?> acteurs 😎 </p>
+</div>
 <!-- Boutons d'ajout -->
-
+<div class = "double-button">
 <button id="togg1">Ajouter un acteur</button>
 <button id = "togg2">Ajouter un casting</button>
+</div>
 
 <!-- AJOUTER UN ACTEUR -->
 
@@ -69,22 +70,23 @@
 
 
 <!-- TABLEAU AVEC BOUCLE POUR AFFICHER CHAQUE ACTEUR-->
-
-<table>
-    <thead>
-        <tr>
-            <th> ACTEUR </th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($requeteListActeurs -> fetchAll() as $acteur) { ?>
-                <tr>
-                    <td><a href="index.php?action=detailActeur&id=<?=$acteur['id_acteur'] ?>"><?= $acteur["identite"] ?> </td></a>
-                <tr>
-        <?php } ?>
-    </tbody>
-</table>
+<div class = "table">
+    <table>
+        <thead>
+            <tr>
+                <th> ACTEUR </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($requeteListActeurs -> fetchAll() as $acteur) { ?>
+                    <tr>
+                        <td><a href="index.php?action=detailActeur&id=<?=$acteur['id_acteur'] ?>"><?= $acteur["identite"] ?> </td></a>
+                    <tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 
 <?php
 

@@ -1,12 +1,13 @@
 <?php ob_start(); ?>
 
 <!-- Compter les films -->
-
-<p class = "p-count"> Il y a <?= $requeteListFilms->rowCount() ?> films </p> 
+<div class = "entete">
+<p class = "p-count"> Il y a <?= $requeteListFilms->rowCount() ?> films 🎥 </p> 
 
 <!-- Ajouter un film -->
 
 <button id="togg1">Ajouter un film</button>
+</div>
 
 <form action = "index.php?action=addFilm" method = "post" class = "form-add-film" id="d1">
  
@@ -45,28 +46,29 @@
 </form>
 
 <!-- Tableau avec boucle pour afficher chaque film -->
-
-<table class="table-film">
-    <thead class=>
-        <tr>
-            <th> TITRE </th>
-            <th> ANNEE SORTIE </th>
-            <th> Réalisateur</th>
-            <th> Durée  </th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($requeteListFilms -> fetchAll() as $film) { ?>
-                <tr>
-                    <td><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></a></td>
-                    <td> <?= $film["annee_sortie"] ?> </td>
-                    <td><a href="index.php?action=detailRealisateur&id=<?=$film['id_realisateur']?>"><?= $film["realisateur"] ?></a> </td>
-                    <td> <?= $film["duree_film"] ?> </td>
-                <tr>
-        <?php } ?>
-    </tbody>
-</table>
+<div class = "table">
+    <table class="table1">
+        <thead class=>
+            <tr>
+                <th> TITRE </th>
+                <th> ANNEE SORTIE </th>
+                <th> REALISATEUR</th>
+                <th>DUREE </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($requeteListFilms -> fetchAll() as $film) { ?>
+                    <tr>
+                        <td><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></a></td>
+                        <td> <?= $film["annee_sortie"] ?> </td>
+                        <td><a href="index.php?action=detailRealisateur&id=<?=$film['id_realisateur']?>"><?= $film["realisateur"] ?></a> </td>
+                        <td> <?= $film["duree_film"] ?> </td>
+                    <tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 
 <?php
 

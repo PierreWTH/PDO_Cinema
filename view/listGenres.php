@@ -1,13 +1,13 @@
 <?php ob_start(); ?>
 
 <!-- Compter les genres -->
-
-<p class = "p-count"> Il y a <?= $requeteListGenres->rowCount() ?> genres </p>
+<div class = "entete">
+<p class = "p-count"> Il y a <?= $requeteListGenres->rowCount() ?> genres 🗄 </p>
 
 <!-- Ajouter un Genre-->
 
 <button id="togg1">Ajouter un genre</button>
-
+</div>
 <form action = "index.php?action=addGenre" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="nomGenre" placeholder = "Nom du genre">
@@ -16,22 +16,23 @@
 </form>
 
 <!-- Tableau avec boucle pour afficher chaque genre -->
-
-<table>
-    <thead>
-        <tr>
-            <th> GENRE </th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($requeteListGenres -> fetchAll() as $genre) { ?>
-                <tr>
-                    <td><a href="index.php?action=detailGenre&id=<?=$genre['id_genre']?>"><?= $genre["nom_genre"] ?></a></td>
-                <tr>
-        <?php } ?>
-    </tbody>
-</table>
+<div class = "table">
+    <table>
+        <thead>
+            <tr>
+                <th> GENRE </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($requeteListGenres -> fetchAll() as $genre) { ?>
+                    <tr>
+                        <td><a href="index.php?action=detailGenre&id=<?=$genre['id_genre']?>"><?= $genre["nom_genre"] ?></a></td>
+                    <tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 
 <?php
 

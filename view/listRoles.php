@@ -3,12 +3,13 @@
 ?>
 
 <!-- Compter les rôles -->
-
-<p class = "p-count"> Il y a <?= $requeteListRoles->rowCount() ?> rôles </p>
+<div class = "entete">
+<p class = "p-count"> Il y a <?= $requeteListRoles->rowCount() ?> rôles 🎭 </p>
 
 <!-- Ajouter un rôle-->
 
 <button id="togg1">Ajouter un rôle</button>
+</div>
 
 <form action = "index.php?action=addRole" method = "post" class = "form-add-film" id="d1">
  
@@ -18,23 +19,24 @@
 </form>
 
 <!-- Tableau avec boucle pour afficher chaque rôle -->
-
-<table>
-    <thead>
-        <tr>
-            <th> ROLE </th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($requeteListRoles -> fetchAll() as $role) { ?>
-                <tr>
-                    <td><a href="index.php?action=detailRole&id=<?=$role['id_role']?>"><?= $role["nom_role"] ?> </td></a>
-                    
-                <tr>
-        <?php } ?>
-    </tbody>
-</table>
+<div class = "table">
+    <table>
+        <thead>
+            <tr>
+                <th> ROLE </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($requeteListRoles -> fetchAll() as $role) { ?>
+                    <tr>
+                        <td><a href="index.php?action=detailRole&id=<?=$role['id_role']?>"><?= $role["nom_role"] ?> </td></a>
+                        
+                    <tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 
 <?php
 

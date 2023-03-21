@@ -1,3 +1,5 @@
+// Afficher formulaires au clic du bouton
+
 let togg1 = document.getElementById("togg1");
 let togg2 = document.getElementById("togg2");
 let d1 = document.getElementById("d1");
@@ -18,3 +20,13 @@ function togg(){
   }
 };
 togg2.onclick = togg;
+
+
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}

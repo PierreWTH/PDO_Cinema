@@ -16,12 +16,16 @@ h1{
 
 h2{
     font-weight: 500;
-    padding: 20px 0px;
+    padding-top: 20px;
 }
 
 a {
     text-decoration: none;
+    color: black;
+    transition: 200ms;
 }
+
+
 
 /********** NAVBAR **********/
 
@@ -34,16 +38,63 @@ nav {
     padding: 20px 20px;
 }
 
-.nav-logo p {
+.nav-logo a {
     font-size: 20px;
     font-weight: 800;
 }
 
 nav a{
-    padding : 0px 15px;
+    margin : 0px 15px;
     color : black;
 }
 
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    display: none;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: black;
+    margin: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: white;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: white;
+    color: white;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 1200px) {
+    nav {
+        display: none;
+    }
+
+    .topnav {
+        display: block;
+    }
+}
 /***** CONTENU *****/
 
 .contenu{
@@ -53,10 +104,21 @@ nav a{
 
 }
 
-.p-count{
-    padding-bottom: 20px;
+
+.h2-contenu{
+    text-align: center;
 }
 
+.p-count{
+    margin-bottom: 20px;
+}
+/***** LIST ACTEURS ****/
+
+.double-button {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
 /**** DETAIL FILM ****/
 
 .affiche-film {
@@ -68,13 +130,45 @@ nav a{
 }
 
 
+/****ENTETE****/
+
+.entete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /**** TABLE ******/
 
 table {
-    padding-top: 20px;
+    margin: 50px 20px 0px 20px;
+    border-collapse: collapse;  
 }
 
+table a:hover{
+    color: white;
+}
+
+th, td {
+ border: 1px solid black;
+ padding: 10px;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+}
+
+th {
+    font-weight: 600;
+    background: #75e9d5
+    
+}
+
+
 /**** FORMULAIRE *****/
+
 
 #togg1, #togg2 {
     padding: 10px;

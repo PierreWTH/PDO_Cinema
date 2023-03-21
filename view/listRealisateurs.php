@@ -1,12 +1,13 @@
 <?php ob_start(); ?>
 
 <!-- Compter les réalisateurs -->
-
-<p class = "p-count"> Il y a <?= $requeteListRealisateurs->rowCount() ?> réalisateurs</p>
+<div class = "entete">
+<p class = "p-count"> Il y a <?= $requeteListRealisateurs->rowCount() ?> réalisateurs 🎬 </p>
 
 <!-- Ajouter un Réalisateur  -->
 
 <button id="togg1">Ajouter un Réalisateur</button>
+</div>
 
 <form action = "index.php?action=addRealisateur" method = "post" class = "form-add-film" id="d1">
  
@@ -22,23 +23,23 @@
 </form>
 
 <!-- Tableau avec boucle pour afficher chaque réalisateur -->
-
-<table>
-    <thead>
-        <tr>
-            <th> REALISATEUR</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($requeteListRealisateurs -> fetchAll() as $realisateur) { ?>
-                <tr>
-                    <td><a href = "index.php?action=detailRealisateur&id=<?=$realisateur['id_realisateur']?>"><?= $realisateur["identite"] ?> </td><a>
-                <tr>
-        <?php } ?>
-    </tbody>
-</table>
-
+<div class = "table">
+    <table>
+        <thead>
+            <tr>
+                <th> REALISATEUR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($requeteListRealisateurs -> fetchAll() as $realisateur) { ?>
+                    <tr>
+                        <td><a href = "index.php?action=detailRealisateur&id=<?=$realisateur['id_realisateur']?>"><?= $realisateur["identite"] ?> </td><a>
+                    <tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 <?php
 
 // Définition des variables utilisées dans template
