@@ -6,6 +6,11 @@ $realisateurDetail = $requeteDetailRealisateur->fetch();
 
 <!-- Affichage des détails du réalisateur-->
 
+
+<div class = "detail">
+
+<img src="<?=$realisateurDetail['img_personne'] ?>" alt="photo du réalisateur" class="affiche-film">
+
 <p> Sexe : <?= $realisateurDetail["sexe"] ?> <p>
 <p> Date de naissance : <?= $realisateurDetail["date_de_naissance"] ?> <p>
 
@@ -22,6 +27,7 @@ $realisateurDetail = $requeteDetailRealisateur->fetch();
     <?php } ?>
 </ul>
 
+</div>
 <?php
 
 // Définition des variables utilisées dans template

@@ -3,7 +3,7 @@ $genreDetail = $requeteNomGenre->fetch()
 ?>
 
 <!-- Boucle pour afficher chaque film de ce genre-->
-
+<div class = "detail">
 <ul>
 <?php
     foreach ($requeteDetailGenre-> fetchAll() as $genreFilm) { ?>
@@ -12,7 +12,7 @@ $genreDetail = $requeteNomGenre->fetch()
 
     <?php } ?>
 </ul>
-
+</div>
 <?php
 
 // Définition des variables utilisées dans template

@@ -50,7 +50,7 @@ class ActeurController
         // Identité
         $pdo = Connect::seConnecter();
         $requeteDetailActeur = $pdo->prepare("
-        SELECT CONCAT(prenom,' ',nom) as identite, DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, sexe
+        SELECT CONCAT(prenom,' ',nom) as identite, DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, sexe, img_personne
         from personne p
         INNER JOIN acteur a on p.id_personne = a.id_personne
         WHERE a.id_acteur = :id");

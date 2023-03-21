@@ -5,6 +5,9 @@ $acteurDetail = $requeteDetailActeur->fetch();
 ?>
 
 <!-- Détail des acteurs -->
+<div class = "detail">
+
+<img src="<?=$acteurDetail['img_personne'] ?>" alt="photo de l'acteur" class="affiche-film">
 
 <p> Sexe : <?= $acteurDetail["sexe"] ?> <p>
 <p> Date de naissance : <?= $acteurDetail["date_de_naissance"] ?> <p>
@@ -22,6 +25,7 @@ $acteurDetail = $requeteDetailActeur->fetch();
 
     <?php } ?>
 </ul>
+</div>
 
 <?php
 

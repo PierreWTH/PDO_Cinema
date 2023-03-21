@@ -6,8 +6,8 @@ $realDetail = $requeteDetailReal->fetch();
 ?>
 
 <!-- Affichage des détails du film-->
-
-<img src="<?=$filmDetail['img'] ?>" alt="affiche du film" class="affiche-film">
+<div class = "detail">
+<img src="<?=$filmDetail['img_film'] ?>" alt="affiche du film" class="affiche-film">
 
 <p> Réalisateur :<a href = "index.php?action=detailRealisateur&id=<?=$filmDetail['id_realisateur']?>"> <?= $realDetail['identite'] ?></a><p>
 <p> Durée : <?= $filmDetail["duree_film"] ?> <p>
@@ -61,7 +61,7 @@ for ($i = $note - 5; $i < 0; $i++) {?>
 
     <?php } ?>
 </ul>
-
+</div>
 <?php
 
 // Définition des variables utilisées dans template

@@ -5,7 +5,7 @@ $roleDetail = $requeteNomRole->fetch();
 ?>
 
 <!-- Boucle pour l'affichage de chaque acteur qui a joué le rôle -->
-
+<div class = "detail">
 <ul>
 <?php
     foreach ($requeteDetailRole-> fetchAll() as $role) { ?>
@@ -14,7 +14,7 @@ $roleDetail = $requeteNomRole->fetch();
 
     <?php } ?>
 </ul>
-
+</div>
 <?php
 
 // Définition des variables utilisées dans template

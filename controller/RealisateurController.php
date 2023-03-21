@@ -26,7 +26,7 @@ class RealisateurController
         // Identité d'un réalisateurs
         $pdo = Connect::seConnecter();
         $requeteDetailRealisateur = $pdo->prepare("
-        SELECT CONCAT(prenom, ' ',nom) as identite, sexe,  DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance
+        SELECT CONCAT(prenom, ' ',nom) as identite, sexe,  DATE_FORMAT(date_naissance, '%d/%m/%Y') as date_de_naissance, img_personne
         FROM personne p
         INNER JOIN realisateur r ON p.id_personne = r.id_personne
         WHERE id_realisateur =  :id");
