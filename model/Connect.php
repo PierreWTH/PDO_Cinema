@@ -8,7 +8,7 @@ abstract class Connect
     const HOST = "localhost";
     const DB = "cinema_pierre";
     const USER = "root";
-    const PASS = "root";
+    const PASS = "";
 
     // Fonction pour se connecter a la bdd
 

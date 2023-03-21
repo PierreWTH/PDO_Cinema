@@ -21,6 +21,13 @@ class RoleController
         GROUP BY r.id_role
         ORDER BY nom_role
             ");
+
+        $pdo = Connect::seConnecter();
+        $requeteListRoles = $pdo->query("
+        SELECT nom_role, id_role
+        from role
+        ORDER BY nom_role
+            ");
         
         require "view/listRoles.php";
     }

@@ -4,6 +4,15 @@
 
 <p class = "p-count"> Il y a <?= $requeteListGenres->rowCount() ?> genres </p>
 
+<!-- Ajouter un Genre-->
+
+<form action = "index.php?action=addGenre" method = "post" class = "form-add-film">
+ 
+        <input type="text" name ="nomGenre" placeholder = "Nom du genre">
+        
+        <input type="submit" name = "submit" value ="Ajouter">   
+</form>
+
 <!-- Tableau avec boucle pour afficher chaque genre -->
 
 <table>

@@ -49,6 +49,7 @@ if(isset($_GET["action"]))
 
         case "listGenres" : $ctrlGenre -> listGenres(); break;
         case "detailGenre" : $ctrlGenre-> detailGenre($id); break;
+        case "addGenre" : $ctrlGenre -> addGenre(); break;
     
     }
 
