@@ -57,6 +57,16 @@ nav a{
     padding-bottom: 20px;
 }
 
+/**** DETAIL FILM ****/
+
+.affiche-film {
+
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 350px;
+}
+
 
 /**** TABLE ******/
 

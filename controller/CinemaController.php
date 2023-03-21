@@ -45,7 +45,7 @@ class CinemaController
         // Afficher infos films
         $pdo = Connect::seConnecter();
         $requeteDetailFilm = $pdo->prepare("
-        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note, synopsis, note, id_realisateur, nom_genre
+        SELECT titre, TIME_FORMAT(SEC_TO_TIME(duree*60), '%H:%i') as duree_film, annee_sortie, note, synopsis, note, id_realisateur, nom_genre, img
         FROM film f
         INNER JOIN appartenir a ON f.id_film = a.id_film
         INNER JOIN genre g ON a.id_genre = g.id_genre
@@ -74,6 +74,16 @@ class CinemaController
         ORDER BY identite");
         $requeteDetailCasting->execute(["id" => $id]);
 
+        // Afficher tous les genres
+        $pdo = Connect::seConnecter();
+        $requeteDetailGenre = $pdo->prepare("
+        SELECT a.id_film, a.id_film, g.nom_genre, g.id_genre
+        FROM appartenir a
+        INNER JOIN genre g ON a.id_genre = g.id_genre
+        WHERE a.id_film = :id
+        ");
+        $requeteDetailGenre->execute(["id" => $id]);
+
         require "view/detailFilm.php";
         
     }
@@ -92,7 +102,8 @@ class CinemaController
             $dureeFilm = filter_input(INPUT_POST, "dureeFilm", FILTER_VALIDATE_INT);
             $noteFilm = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_INT);
             $realisateurFilm =  filter_input(INPUT_POST, "id_realisateurFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $genreFilm = filter_input(INPUT_POST, "genreFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $genreFilm = filter_input(INPUT_POST, "genreFilm", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+
             $requeteAddFilm = $pdo->prepare("
             INSERT INTO film (titre, synopsis, annee_sortie, duree, note, id_realisateur)
                 VALUES ( :titreFilm, :synopsisFilm, :anneeSortieFilm, :dureeFilm, :noteFilm, :realisateurFilm)
@@ -103,18 +114,20 @@ class CinemaController
             // On récupère le dernier ID rentré dans la BDD
             $idFilm = $pdo -> lastInsertId();
 
+            // Boucle pour ajouter les genres si il y en a plusieurs
+            foreach ($genreFilm as $genre)
+            {
             $requeteGenreFilm = $pdo->prepare("
             INSERT INTO appartenir (id_film, id_genre)
             VALUES (:id, :genre)
             ");
-            $requeteGenreFilm->execute(["id"=> $idFilm, "genre" => $genreFilm]);
+            $requeteGenreFilm->execute(["id"=> $idFilm, "genre" => $genre]);
+            }
             
         }
 
         header("Location: index.php?action=listFilms");
     }
-
-
 
 }
 ?>

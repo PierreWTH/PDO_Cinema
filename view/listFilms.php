@@ -31,15 +31,14 @@
         </select>
 
         <!--Affichage liste des genres -->
-        <select name="genreFilm" placeholder = "Nom du genre">
-            <option value="">Genre</option>
+        
+        
             <?php
         foreach($requeteFormListGenre->fetchAll() as $genre){ ?>
-        
-        <option value="<?= $genre["id_genre"] ?>"><?= $genre["nom_genre"] ?></option>
+        <input type="checkbox" value="<?= $genre["id_genre"] ?>" name="genreFilm[]" id="<?= $genre["id_genre"] ?>" placeholder = "Nom du genre"> 
+        <label><?= $genre["nom_genre"] ?></label>
     <?php } ?>
           
-        </select>
 
           
         <input type="submit" name = "submit" value ="Ajouter">   

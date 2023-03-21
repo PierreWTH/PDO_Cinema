@@ -7,11 +7,21 @@ $realDetail = $requeteDetailReal->fetch();
 
 <!-- Affichage des détails du film-->
 
+<img src="<?=$filmDetail['img'] ?>" alt="affiche du film" class="affiche-film">
+
 <p> Réalisateur :<a href = "index.php?action=detailRealisateur&id=<?=$filmDetail['id_realisateur']?>"> <?= $realDetail['identite'] ?></a><p>
 <p> Durée : <?= $filmDetail["duree_film"] ?> <p>
 <p> Année de sortie : <?= $filmDetail["annee_sortie"] ?> <p>
-<p> Genre : <?= $filmDetail["nom_genre"] ?> <p>
+
+<!-- Boucle pour afficher tous les genres du film -->
+<p> Genre :
+<?php foreach ($requeteDetailGenre->fetchAll() as $genre){?>
+    - <?= $genre["nom_genre"]?> 
+<?php } ?>
+</p>
+    
 <p> Note : 
+
 
 <!-- Boucle pour la notation-->
 
