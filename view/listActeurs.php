@@ -11,7 +11,7 @@
 </div>
 
 <!-- AJOUTER UN ACTEUR -->
-
+<div class = 'form'>
 <form action = "index.php?action=addActeur" method = "post" class = "form-add-film" id="d1">
  
         <input type="text" name ="prenomActeur" placeholder = "Prenom">
@@ -24,6 +24,7 @@
           
         <input type="submit" name = "submit" value ="Ajouter">   
 </form>
+
 
 <!-- AJOUTER UN CASTING-->
 
@@ -71,7 +72,7 @@
 
 <!-- TABLEAU AVEC BOUCLE POUR AFFICHER CHAQUE ACTEUR-->
 <div class = "table">
-    <table>
+    <table class = "table1">
         <thead>
             <tr>
                 <th> ACTEUR </th>

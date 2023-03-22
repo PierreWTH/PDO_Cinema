@@ -7,43 +7,52 @@
 <!-- Ajouter un film -->
 
 <button id="togg1">Ajouter un film</button>
-</div>
+<div id = "d1">
+<form action = "index.php?action=addFilm" method = "post" class = "form-add-film">
+        <div class = "input-film">
+            <input type="text" name ="titreFilm" placeholder = "Titre">
+            
+            <input type="text" name ="synopsisFilm"  placeholder = "Synopsis">
+        
+            <input type="number" name ="anneeSortieFilm" placeholder = "Année de sortie">
+            
+            <input type="number" name ="dureeFilm" placeholder = "Durée en minute">
+            
+            <input type="number" name = "noteFilm" placeholder = "Note">
 
-<form action = "index.php?action=addFilm" method = "post" class = "form-add-film" id="d1">
- 
-        <input type="text" name ="titreFilm" placeholder = "Titre">
-        
-        <input type="text" name ="synopsisFilm"  placeholder = "Synopsis">
-       
-        <input type="number" name ="anneeSortieFilm" placeholder = "Année de sortie">
-        
-        <input type="number" name ="dureeFilm" placeholder = "Durée en minute">
-        
-        <input type="number" name = "noteFilm" placeholder = "Note">
-
-        <!--Affichage liste des réalisteurs -->
-        <select name="id_realisateurFilm" placeholder = "Nom du réalisateur">
-            <option value="">Réalisateur</option>
-            <?php
-        foreach($requeteFormListReal->fetchAll() as $real){ ?>
-        
-        <option value="<?= $real["id_realisateur"] ?>"><?= $real["identite"] ?></option>
-    <?php } ?>
-        </select>
+            <!--Affichage liste des réalisteurs -->
+            <select name="id_realisateurFilm" placeholder = "Nom du réalisateur">
+                <option value="">Réalisateur</option>
+                <?php
+            foreach($requeteFormListReal->fetchAll() as $real){ ?>
+            
+            <option value="<?= $real["id_realisateur"] ?>"><?= $real["identite"] ?></option>
+        <?php } ?>
+            </select>
+        </div>
 
         <!--Affichage liste des genres -->
         
         
+        <div class = "checkbox">   
             <?php
         foreach($requeteFormListGenre->fetchAll() as $genre){ ?>
-        <input type="checkbox" value="<?= $genre["id_genre"] ?>" name="genreFilm[]" id="<?= $genre["id_genre"] ?>" placeholder = "Nom du genre"> 
-        <label><?= $genre["nom_genre"] ?></label>
-    <?php } ?>
-          
+        
+        <div><input type="checkbox" value="<?= $genre["id_genre"] ?>" name="genreFilm[]" id="<?= $genre["id_genre"] ?>" placeholder = "Nom du genre" class = "checkbox-input"> 
+        <label><?= $genre["nom_genre"] ?></label></div>
+        
+            <?php } ?>
+
+        
+        </div>
+        <div>
+        <input type="submit" name = "submit" value ="Ajouter"> 
+        </div> 
 
           
-        <input type="submit" name = "submit" value ="Ajouter">   
+         
 </form>
+</div>
 
 <!-- Tableau avec boucle pour afficher chaque film -->
 <div class = "table">

@@ -9,8 +9,8 @@ $acteurDetail = $requeteDetailActeur->fetch();
 
 <img src="<?=$acteurDetail['img_personne'] ?>" alt="photo de l'acteur" class="affiche-film">
 
-<p> Sexe : <?= $acteurDetail["sexe"] ?> <p>
-<p> Date de naissance : <?= $acteurDetail["date_de_naissance"] ?> <p>
+<p> <span> Sexe </span> : <?= $acteurDetail["sexe"] ?> <p>
+<p> <span> Date de naissance </span>: <?= $acteurDetail["date_de_naissance"] ?> <p>
 
 
 <h2>Filmographie</h2>

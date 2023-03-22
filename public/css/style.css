@@ -25,6 +25,9 @@ a {
     transition: 200ms;
 }
 
+span {
+    font-weight: 600;
+}
 
 
 /********** NAVBAR **********/
@@ -154,30 +157,47 @@ nav a{
 /**** TABLE ******/
 
 table {
-    margin: 50px 20px 0px 20px;
-    border-collapse: collapse;  
+    
+    border-collapse: collapse;
+    width: 100%;
+    
 }
 
 table a:hover{
-    color: white;
+    color: #7be5d8;
 }
 
 th, td {
- border: 1px solid black;
+ border: 0px solid black;
  padding: 10px;
+ background: white;
+ 
+}
+
+td {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
 .table {
     display: flex;
     justify-content: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 50px 20px 0px 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    max-width: 100%;
+    
 }
+
+
 
 th {
     font-weight: 600;
     background: #75e9d5
     
 }
-
 
 /**** FORMULAIRE *****/
 
@@ -196,12 +216,37 @@ th {
 
 }
 
-.form-add-film {
+#d1 {
+display: none;
+}
+
+#d2 {
     display: none;
+}
+
+.form-add-film {
+    
     padding: 20px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
 
 }
 
+form input, select {
+    display: flex;
+    justify-content: justify;
+    align-items: center;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.checkbox-input{
+    display: inline-block
+}
 
 
   

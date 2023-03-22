@@ -11,8 +11,8 @@ $realisateurDetail = $requeteDetailRealisateur->fetch();
 
 <img src="<?=$realisateurDetail['img_personne'] ?>" alt="photo du réalisateur" class="affiche-film">
 
-<p> Sexe : <?= $realisateurDetail["sexe"] ?> <p>
-<p> Date de naissance : <?= $realisateurDetail["date_de_naissance"] ?> <p>
+<p> <span>Sexe</span> : <?= $realisateurDetail["sexe"] ?> <p>
+<p> <span>Date de naissance</span> : <?= $realisateurDetail["date_de_naissance"] ?> <p>
 
 <h2>Films réalisés</h2>
 

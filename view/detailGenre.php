@@ -18,7 +18,7 @@ $genreDetail = $requeteNomGenre->fetch()
 // Définition des variables utilisées dans template
 
 $titre = "Detail genre";
-$titre_secondaire = "Détails du genre : ".$genreDetail['nom_genre'];
+$titre_secondaire = "Films qui appartiennent au genre : ".$genreDetail['nom_genre'];
 $contenu = ob_get_clean();
 require "view/template.php";
 
