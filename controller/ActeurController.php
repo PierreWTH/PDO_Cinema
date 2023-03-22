@@ -83,12 +83,13 @@ class ActeurController
             $nomActeur = filter_input(INPUT_POST, "nomActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexeActeur= filter_input(INPUT_POST, "sexeActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissanceActeur= filter_input(INPUT_POST, "dateNaissanceActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $imgActeur= filter_input(INPUT_POST, "imgActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
             $requeteAddPersonneActeur = $pdo->prepare("
-            INSERT INTO personne (nom, prenom, sexe, date_naissance)
-                VALUES ( :nomActeur, :prenomActeur, :sexeActeur, :dateNaissanceActeur)
+            INSERT INTO personne (nom, prenom, sexe, date_naissance, img_personne)
+                VALUES ( :nomActeur, :prenomActeur, :sexeActeur, :dateNaissanceActeur, :imgActeur)
             ");
-            $requeteAddPersonneActeur->execute(["nomActeur" => $nomActeur, "prenomActeur" => $prenomActeur, "sexeActeur" => $sexeActeur , "dateNaissanceActeur" => $dateNaissanceActeur]);
+            $requeteAddPersonneActeur->execute(["nomActeur" => $nomActeur, "prenomActeur" => $prenomActeur, "sexeActeur" => $sexeActeur , "dateNaissanceActeur" => $dateNaissanceActeur, "imgActeur" => $imgActeur]);
             
             // On récupère le dernier ID rentré dans la BDD
             $idActeur = $pdo -> lastInsertId();

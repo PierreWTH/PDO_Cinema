@@ -28,7 +28,7 @@
         </div>
     </nav>
     <div class="topnav">
-        <a href="#home" class="active">PDO Cinéma</a>
+        <a href="index.php" class="active">PDO Cinéma</a>
   <!-- Navigation links (hidden by default) -->
         <div id="myLinks">
         <a href="index.php?action=listFilms">Films<a>

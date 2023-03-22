@@ -21,9 +21,12 @@
         <input type="text" name ="sexeActeur" placeholder = "Sexe">
         
         <input type="date" name ="dateNaissanceActeur" placeholder = "Date de Naissance">
-          
+         
+        <input type="text" name ="imgActeur" placeholder = "Photo">
+
         <input type="submit" name = "submit" value ="Ajouter">   
 </form>
+</div>
 
 
 <!-- AJOUTER UN CASTING-->

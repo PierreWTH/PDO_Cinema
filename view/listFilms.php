@@ -29,6 +29,8 @@
             <option value="<?= $real["id_realisateur"] ?>"><?= $real["identite"] ?></option>
         <?php } ?>
             </select>
+
+            <input type="text" name = "imgFilm" placeholder = "Url Photo">
         </div>
 
         <!--Affichage liste des genres -->
@@ -56,8 +58,8 @@
 
 <!-- Tableau avec boucle pour afficher chaque film -->
 <div class = "table">
-    <table class="table1">
-        <thead class=>
+    <table>
+        <thead>
             <tr>
                 <th> TITRE </th>
                 <th> ANNEE SORTIE </th>

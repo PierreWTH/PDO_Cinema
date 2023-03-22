@@ -103,6 +103,7 @@ class CinemaController
             $noteFilm = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_INT);
             $realisateurFilm =  filter_input(INPUT_POST, "id_realisateurFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $genreFilm = filter_input(INPUT_POST, "genreFilm", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+            $imgFilm = filter_input(INPUT_POST, "imgFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Vérification des variables épurées
 
@@ -110,10 +111,10 @@ class CinemaController
             {
                 // Ajout du contenu du formulaire a la BDD
                 $requeteAddFilm = $pdo->prepare("
-                INSERT INTO film (titre, synopsis, annee_sortie, duree, note, id_realisateur)
-                    VALUES ( :titreFilm, :synopsisFilm, :anneeSortieFilm, :dureeFilm, :noteFilm, :realisateurFilm)
+                INSERT INTO film (titre, synopsis, annee_sortie, duree, note, id_realisateur, img_film)
+                    VALUES ( :titreFilm, :synopsisFilm, :anneeSortieFilm, :dureeFilm, :noteFilm, :realisateurFilm, :imgFilm)
                 ");
-                $requeteAddFilm->execute(["titreFilm" => $titreFilm, "synopsisFilm" => $synopsisFilm, "anneeSortieFilm" => $anneeSortieFilm , "dureeFilm" => $dureeFilm, "noteFilm" => $noteFilm, "realisateurFilm" => $realisateurFilm]);
+                $requeteAddFilm->execute(["titreFilm" => $titreFilm, "synopsisFilm" => $synopsisFilm, "anneeSortieFilm" => $anneeSortieFilm , "dureeFilm" => $dureeFilm, "noteFilm" => $noteFilm, "realisateurFilm" => $realisateurFilm, "imgFilm" => $imgFilm]);
                 
 
                 // On récupère le dernier ID rentré dans la BDD

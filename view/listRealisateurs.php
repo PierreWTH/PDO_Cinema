@@ -18,6 +18,8 @@
         <input type="text" name ="sexeReal" placeholder = "Sexe">
         
         <input type="date" name ="dateNaissanceReal" placeholder = "Date de Naissance">
+
+        <input type="text" name ="imgReal" placeholder = "Url Photo">
           
         <input type="submit" name = "submit" value ="Ajouter">   
 </form>

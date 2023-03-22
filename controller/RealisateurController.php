@@ -56,12 +56,13 @@ class RealisateurController
             $nomReal = filter_input(INPUT_POST, "nomReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexeReal = filter_input(INPUT_POST, "sexeReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissanceReal = filter_input(INPUT_POST, "dateNaissanceReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
+            $imgReal = filter_input(INPUT_POST, "imgReal", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
             $requeteAddPersonneReal = $pdo->prepare("
-            INSERT INTO personne (nom, prenom, sexe, date_naissance)
-                VALUES ( :nomReal, :prenomReal, :sexeReal, :dateNaissanceReal)
+            INSERT INTO personne (nom, prenom, sexe, date_naissance, img_personne)
+                VALUES ( :nomReal, :prenomReal, :sexeReal, :dateNaissanceReal, :imgReal)
             ");
-            $requeteAddPersonneReal->execute(["nomReal" => $nomReal, "prenomReal" => $prenomReal, "sexeReal" => $sexeReal , "dateNaissanceReal" => $dateNaissanceReal]);
+            $requeteAddPersonneReal->execute(["nomReal" => $nomReal, "prenomReal" => $prenomReal, "sexeReal" => $sexeReal , "dateNaissanceReal" => $dateNaissanceReal, "imgReal" => $imgReal]);
             
             // On récupère le dernier ID rentré dans la BDD
             $idReal = $pdo -> lastInsertId();
