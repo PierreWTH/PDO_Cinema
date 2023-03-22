@@ -228,6 +228,7 @@ display: none;
     
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     align-items: center;
     justify-content: center;
@@ -249,5 +250,4 @@ form input, select {
 }
 
 
-  
 
